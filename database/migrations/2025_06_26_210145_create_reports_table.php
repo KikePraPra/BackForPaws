@@ -16,11 +16,11 @@ return new class extends Migration
             $table->foreignId('account_id')->constrained('accounts')->onDelete('cascade');
             $table->foreignId('animal_id')->constrained('animals')->onDelete('cascade');
             $table->string('pet_name');
-            $table->integer('pet_age');
+            $table->integer('pet_age')->nullable();
             $table->string('last_place');
             $table->string('pet_image');
             $table->text('description');
-            $table->string('pet_state');
+            $table->enum('petState', ['perdido', 'encontrado', 'en_casa']);
             $table->timestamps();
         });
     }
