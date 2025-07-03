@@ -17,8 +17,8 @@
     <body>
         <main class="bg-white">
 
-  <article class="flex items-center flex-col rounded-3xl bg-white px-7 pt-10 -translate-y-12 z-10">
-    <h1 class="text-3xl font-bold text-green-700">Registro</h1>
+  <article class="min-h-screen flex items-center justify-center flex-col rounded-3xl bg-white px-7 pt-3 z-10">
+    <h1 class="text-3xl font-bold text-green-700">Create New Account</h1>
 
     <div class="mt-11 flex flex-col gap-7">
       
@@ -35,26 +35,26 @@
         <form method="POST" action="{{ route('account.store') }}" enctype="multipart/form-data" class="flex flex-col w-max mx-auto font-sans">
           @csrf
 
-          <label>Correo Electrónico</label>
+          <label>Email:</label>
           <input type="email" name="email" id="email" value="{{ old('email') }}" required
             class="rounded-lg border-2 border-green-600 h-12 w-80 mt-5 text-left pl-2 text-lg font-semibold"/>
 
-          <label class="mt-6">Nombre de Usuario</label>
+          <label class="mt-6">Username:</label>
           <input type="text" name="username" id="username" value="{{ old('username') }}" required
             class="rounded-lg border-2 border-green-600 h-12 w-80 mt-5 text-left pl-2 text-lg font-semibold"/>
 
-          <label class="mt-6">Número de teléfono</label>
+          <label class="mt-6">Tel:</label>
           <input type="number" name="phone_number" id="phone_number" value="{{ old('phone_number') }}" required
             class="rounded-lg border-2 border-green-600 h-12 w-80 mt-5 text-left pl-2 text-lg font-semibold"/>
 
-          <label class="mt-6">Contraseña</label>
+          <label class="mt-6">Password:</label>
           <input type="password" name="password" id="password" value="{{ old('password') }}" required
             class="rounded-lg border-2 border-green-600 h-12 w-80 mt-5 text-left pl-2 text-lg font-semibold"/>
 
 
             <!-- imagen -->
 
-            <label for="profile_picture" class="block text-sm font-medium text-gray-700 mt-9">Foto de perfil</label>
+            <label for="profile_picture" class="block text-sm font-medium text-gray-700 mt-9">Profile photo (optional)</label>
 <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md hover:border-green-500 transition duration-150">
     <div class="space-y-1 text-center">
         <div id="imagePreviewContainer" class="hidden mb-4">
@@ -65,14 +65,14 @@
         </svg>
         <div class="flex flex-col items-center">
             <label for="profile_picture" class="cursor-pointer bg-white rounded-md font-medium text-green-600 hover:text-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 px-3 py-2 mb-2">
-                Subir una imagen
+                Upload an image
             </label>
             <input id="profile_picture" name="profile_picture" type="file" accept="image/*"
-                class="block w-full text-sm text-gray-500 mt-2" required>
+                class="block w-full text-sm text-gray-500 mt-2">
         </div>
-        <p class="text-xs text-gray-500">PNG, JPG, GIF hasta 2MB</p>
+        <p class="text-xs text-gray-500">PNG, JPG, GIF until 2MB</p>
     </div>
-</div>
+    </div>
                 @error('profile_picture')
                     <span class="text-red-600 text-sm" role="alert">
                         <strong>{{ $message }}</strong>
@@ -82,9 +82,13 @@
             <!-- imagen -->
 
 
-          <button type="submit" class="mt-8 pb-5.5 h-12 mb-5 w-80 rounded-2xl pt-2 bg-green-700 text-white border-2 font-fredoka cursor-pointer border-green-700 hover:bg-transparent hover:text-green-700 duration-400">
-            Confirmar
+          <button type="submit" class="mt-8 pb-5.5 h-12 mb-5 w-80 rounded-2xl pt-2 bg-green-600 text-white border-2 font-fredoka cursor-pointer border-green-600 hover:bg-transparent hover:text-green-700 duration-400">
+            Confirm
           </button>
+           <a href="{{ route('account.index') }}"
+           class="mt-1 bg-green-700 text-white font-bold px-6 py-2 rounded-2xl w-full max-w-xs text-center hover:bg-transparent hover:text-green-700 border-2 border-green-700 transition duration-400 block">
+            Back
+        </a>
 
         </form>
       

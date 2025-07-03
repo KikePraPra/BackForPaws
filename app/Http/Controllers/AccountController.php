@@ -35,10 +35,10 @@ class AccountController extends Controller
         //
 
         $request->validate([
-            'username' => 'required',
-            'password' => 'required|min:8',
+            'username' => 'required|min:5|max:30',
+            'password' => 'required|min:8|max:100',
             'email' => 'required|email|unique:accounts,email',
-            'phone_number' => 'required|numeric',
+            'phone_number' => 'required|numeric|',
             'profile_picture' => 'nullable|image|max:2048',
         ]);
 
@@ -68,7 +68,8 @@ class AccountController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $account = Account::findOrFail($id);
+        return view('account.show', compact('account'));
     }
 
     /**
@@ -76,7 +77,9 @@ class AccountController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $accountUsers = Account::all();
+        $account = Account::findOrFail($id);
+        return view('account.edit', compact('accountUsers', 'account'));
     }
 
     /**
@@ -84,7 +87,39 @@ class AccountController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $account = Account::findOrFail($id);
+        $request->validate([
+            'username' => 'required|min:5|max:30',
+            'password' => 'nullable|min:8|max:100',
+            'email' => 'required|email|unique:accounts,email,' . $account->id,
+            'phone_number' => 'required|numeric|',
+            'profile_picture' => 'nullable|image|max:2048',
+        ]);
+
+        $data = [
+        'username' => $request->username,
+        'email' => $request->email,
+        'phone_number' => $request->phone_number,
+        ];
+
+         if ($request->filled('password')) {
+        $data['password'] = $request->password;
+        }
+
+        // Si se sube una nueva imagen, borra la anterior y guarda la nueva
+        if ($request->hasFile('profile_picture')) {
+        // Borra la imagen anterior si existe
+        if ($account->profile_picture && \Storage::disk('public')->exists($account->profile_picture)) {
+            \Storage::disk('public')->delete($account->profile_picture);
+        }
+        $imagePath = $request->file('profile_picture')->store('account', 'public');
+        $data['profile_picture'] = $imagePath;
+    }
+
+
+       $account->update($data);
+
+        return redirect()->route('account.index')->with('success', 'account update created sucessfully');
     }
 
     /**
@@ -92,7 +127,9 @@ class AccountController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $account = Account::findOrFail($id);
+        $account->delete();
+        return redirect()->route('account.index')->with('success', 'account deleted successfully');
     }
 
     public function all(){
