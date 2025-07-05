@@ -131,9 +131,13 @@ class AccountController extends Controller
         $account->delete();
         return redirect()->route('account.index')->with('success', 'account deleted successfully');
     }
-
-    public function all(){
-        $accounts = Account::all()->get();
+//API 
+    public function all()
+    {
+        $accounts = Account::all(); 
         return response()->json($accounts);
     }
+
+
+    
 }
