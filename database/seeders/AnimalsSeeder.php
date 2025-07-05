@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -13,25 +12,22 @@ class AnimalsSeeder extends Seeder
      */
     public function run(): void
     {
-        //
         DB::table('animals')->insert([
-            ['name' => 'Perro', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Gato', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Conejo', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Tortuga', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Serpiente', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Ave', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Cerdo', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Oveja', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Cabra', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Vaca', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Toro', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Gallina', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Burro', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Caballo', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Pato', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Hamster', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Erizo', 'created_at' => now(), 'updated_at' => now()],
+            ['specie' => 'Perro', 'created_at' => now(), 'updated_at' => now()],
+            ['specie' => 'Gato', 'created_at' => now(), 'updated_at' => now()],
+            ['specie' => 'Conejo', 'created_at' => now(), 'updated_at' => now()],
+            ['specie' => 'Hamster', 'created_at' => now(), 'updated_at' => now()],
+            ['specie' => 'Erizo', 'created_at' => now(), 'updated_at' => now()],
+            ['specie' => 'Pez', 'created_at' => now(), 'updated_at' => now()],
+            ['specie' => 'Tortuga', 'created_at' => now(), 'updated_at' => now()],
+            ['specie' => 'Loro', 'created_at' => now(), 'updated_at' => now()],
+            ['specie' => 'Canario', 'created_at' => now(), 'updated_at' => now()],
+            ['specie' => 'Periquito', 'created_at' => now(), 'updated_at' => now()],
+            ['specie' => 'Hurón', 'created_at' => now(), 'updated_at' => now()],
+            ['specie' => 'Cuy', 'created_at' => now(), 'updated_at' => now()],
+            ['specie' => 'Chinchilla', 'created_at' => now(), 'updated_at' => now()],
+            ['specie' => 'Iguana', 'created_at' => now(), 'updated_at' => now()],
+            ['specie' => 'Gecko', 'created_at' => now(), 'updated_at' => now()],
         ]);
     }
 }
