@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Account;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class AccountController extends Controller
 {
@@ -52,7 +53,7 @@ class AccountController extends Controller
        
         $account = Account::create([
             'username' => $request->username,
-            'password' => Hash::make($request->password),
+            'password' => $request->password,
             'email' => $request->email,
             'phone_number' => $request->phone_number,
             'profile_picture' => $imagePath
@@ -128,8 +129,35 @@ class AccountController extends Controller
     public function destroy(string $id)
     {
         $account = Account::findOrFail($id);
-        $account->delete();
-        return redirect()->route('account.index')->with('success', 'account deleted successfully');
+        // $account->delete();
+        // return redirect()->route('account.index')->with('success', 'account deleted successfully');
+
+        try{
+            if ($account->profile_picture) {
+                try {
+                    if (Storage::disk('public')->exists($account->profile_picture)) {
+                        Storage::disk('public')->delete($account->profile_picture);
+                    }
+                } catch (\Exception $e) {
+                    \Log::warning('Failed to delete account profile picture: ' . $e->getMessage(), [
+                        'account_id' => $account->id,
+                        'image_path' => $account->profile_picture 
+                    ]);
+                }
+            }
+
+            // Delete the account (relationships will be automatically handled by foreign keys)
+            $account->delete();
+
+            return redirect()
+                ->route('account.index')
+                ->with('success', 'Account deleted successfully!');
+
+        } catch (\Exception $e) {
+            return redirect()
+                ->route('account.index')
+                ->with('error', 'Error deleting account. Please try again.');
+        }
     }
 //API 
     public function all()
@@ -137,7 +165,6 @@ class AccountController extends Controller
         $accounts = Account::all(); 
         return response()->json($accounts);
     }
-
 
     
 }

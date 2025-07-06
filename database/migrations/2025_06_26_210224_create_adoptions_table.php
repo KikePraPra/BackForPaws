@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('meeting_place');
             $table->string('pet_image');
             $table->text('description');
-            $table->enum('petState', ['en_adopción', 'adoptado']);
+            $table->enum('pet_state', ['en_adopción', 'adoptado']);
             $table->timestamps();
         });
     }
