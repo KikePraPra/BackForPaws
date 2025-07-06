@@ -54,8 +54,17 @@
                         class="rounded-lg border-2 border-green-600 h-12 w-80 mt-2 pl-2 text-lg font-semibold"/>
 
                     <label class="mt-6">Lugar de reunión:</label>
-                    <input type="text" name="meeting_place" value="{{ old('meeting_place', $adoption->meeting_place) }}" required
-                        class="rounded-lg border-2 border-green-600 h-12 w-80 mt-2 pl-2 text-lg font-semibold"/>
+                        <select name="meeting_place" required class="rounded-lg border-2 border-green-600 h-12 w-80 mt-2 pl-2 text-lg font-semibold">
+                            <option value="">Seleccione una Provincia</option>
+                            <option value="San José" {{ old('meeting_place', $adoption->meeting_place) == 'San José' ? 'selected' : '' }}>San José</option>
+                            <option value="Cartago" {{ old('meeting_place', $adoption->meeting_place) == 'Cartago' ? 'selected' : '' }}>Cartago</option>
+                            <option value="Limón" {{ old('meeting_place', $adoption->meeting_place) == 'Limón' ? 'selected' : '' }}>Limón</option>
+                            <option value="Puntarenas" {{ old('meeting_place', $adoption->meeting_place) == 'Puntarenas' ? 'selected' : '' }}>Puntarenas</option>
+                            <option value="Heredia" {{ old('meeting_place', $adoption->meeting_place) == 'Heredia' ? 'selected' : '' }}>Heredia</option>
+                            <option value="Alajuela" {{ old('meeting_place', $adoption->meeting_place) == 'Alajuela' ? 'selected' : '' }}>Alajuela</option>
+                            <option value="Guanacaste" {{ old('meeting_place', $adoption->meeting_place) == 'Guanacaste' ? 'selected' : '' }}>Guanacaste</option>
+                        </select>
+
 
                     <label class="mt-6">Estado de la mascota:</label>
                     <select name="pet_state" required class="rounded-lg border-2 border-green-600 h-12 w-80 mt-2 pl-2 text-lg font-semibold">

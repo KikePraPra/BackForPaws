@@ -53,8 +53,18 @@
                         class="rounded-lg border-2 border-green-600 h-12 w-80 mt-2 pl-2 text-lg font-semibold"/>
 
                     <label class="mt-6">Último lugar donde fue visto:</label>
-                    <input type="text" name="last_place" value="{{ old('last_place') }}" required
-                        class="rounded-lg border-2 border-green-600 h-12 w-80 mt-2 pl-2 text-lg font-semibold"/>
+                    <select name="last_place" required class="rounded-lg border-2 border-green-600 h-12 w-80 mt-2 pl-2 text-lg font-semibold">
+                        <option value="">Seleccione una Provincia</option>
+                        <option value="San José" {{ old('pet_state') == 'San José' ? 'selected' : '' }}>San José</option>
+                        <option value="Cartago" {{ old('pet_state') == 'Cartago' ? 'selected' : '' }}>Cartago</option>
+                        <option value="Limon" {{ old('pet_state') == 'Limon' ? 'selected' : '' }}>Limon</option>
+                        <option value="Puntarenas" {{ old('pet_state') == 'Puntarenas' ? 'selected' : '' }}>Puntarenas</option>
+                        <option value="Heredia" {{ old('pet_state') == 'Heredia' ? 'selected' : '' }}>Heredia</option>
+                        <option value="Alajuela" {{ old('pet_state') == 'Alajuela' ? 'selected' : '' }}>Alajuela</option>
+                        <option value="Guanacaste" {{ old('pet_state') == 'Guanacaste' ? 'selected' : '' }}>Guanacaste</option>
+                        <option value="Puntarenas" {{ old('pet_state') == 'Puntarenas' ? 'selected' : '' }}>Puntarenas</option>
+                    </select>
+
 
                     <label class="mt-6">Estado de la mascota:</label>
                     <select name="pet_state" required class="rounded-lg border-2 border-green-600 h-12 w-80 mt-2 pl-2 text-lg font-semibold">

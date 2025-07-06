@@ -53,9 +53,18 @@
                     <input type="number" name="pet_age" value="{{ old('pet_age', $report->pet_age) }}" min="0"
                         class="rounded-lg border-2 border-green-600 h-12 w-80 mt-2 pl-2 text-lg font-semibold"/>
 
-                    <label class="mt-6">Último lugar donde fue visto:</label>
-                    <input type="text" name="last_place" value="{{ old('last_place', $report->last_place) }}" required
-                        class="rounded-lg border-2 border-green-600 h-12 w-80 mt-2 pl-2 text-lg font-semibold"/>
+              <label class="mt-6">Último lugar donde fue visto:</label>
+                <select name="last_place" required class="rounded-lg border-2 border-green-600 h-12 w-80 mt-2 pl-2 text-lg font-semibold">
+                    <option value="">Seleccione una Provincia</option>
+                    <option option value="San José" {{ old('last_place', $report->last_place) == 'San José' ? 'selected' : '' }}>San José</option>
+                    <option value="Cartago" {{ old('last_place', $report->last_place) == 'Cartago' ? 'selected' : '' }}>Cartago</option>
+                    <option value="Limón" {{ old('last_place', $report->last_place) == 'Limón' ? 'selected' : '' }}>Limón</option>
+                    <option value="Puntarenas" {{ old('last_place', $report->last_place) == 'Puntarenas' ? 'selected' : '' }}>Puntarenas</option>
+                    <option value="Heredia" {{ old('last_place', $report->last_place) == 'Heredia' ? 'selected' : '' }}>Heredia</option>
+                    <option value="Alajuela" {{ old('last_place', $report->last_place) == 'Alajuela' ? 'selected' : '' }}>Alajuela</option>
+                    <option value="Guanacaste" {{ old('last_place', $report->last_place) == 'Guanacaste' ? 'selected' : '' }}>Guanacaste</option>
+                </select>
+
 
                     <label class="mt-6">Estado de la mascota:</label>
                     <select name="pet_state" required class="rounded-lg border-2 border-green-600 h-12 w-80 mt-2 pl-2 text-lg font-semibold">
