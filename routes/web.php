@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\AdoptionController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,3 +26,11 @@ Route::get('/reports/{report}', [ReportController::class, 'show'])->name('report
 Route::get('/reports/{report}/edit', [ReportController::class, 'edit'])->name('report.edit');
 Route::put('/reports/{report}', [ReportController::class, 'update'])->name('report.update');
 Route::delete('/reports/{report}', [ReportController::class, 'destroy'])->name('report.destroy');
+// Rutas para adopciones
+Route::get('/adoptions', [AdoptionController::class, 'index'])->name('adoption.index');
+Route::get('/adoptions/create', [AdoptionController::class, 'create'])->name('adoption.create');
+Route::post('/adoptions', [AdoptionController::class, 'store'])->name('adoption.store');
+Route::get('/adoptions/{adoption}', [AdoptionController::class, 'show'])->name('adoption.show');
+Route::get('/adoptions/{adoption}/edit', [AdoptionController::class, 'edit'])->name('adoption.edit');
+Route::put('/adoptions/{adoption}', [AdoptionController::class, 'update'])->name('adoption.update');
+Route::delete('/adoptions/{adoption}', [AdoptionController::class, 'destroy'])->name('adoption.destroy');
