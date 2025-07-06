@@ -53,7 +53,7 @@ class AccountController extends Controller
        
         $account = Account::create([
             'username' => $request->username,
-            'password' => Hash::make($request->password),
+            'password' => $request->password,
             'email' => $request->email,
             'phone_number' => $request->phone_number,
             'profile_picture' => $imagePath

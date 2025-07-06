@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('last_place');
             $table->string('pet_image');
             $table->text('description');
-            $table->enum('petState', ['perdido', 'encontrado', 'en_casa']);
+            $table->enum('pet_state', ['perdido', 'encontrado', 'en_casa']);
             $table->timestamps();
         });
     }

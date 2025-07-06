@@ -24,9 +24,9 @@
                 <form method="POST" action="{{ route('report.store') }}" enctype="multipart/form-data" class="flex flex-col w-max mx-auto font-sans">
                     @csrf
 
-                    <label class="mt-2">Account who made the report:</label>
+                    <label class="mt-2">Cuenta que hizo el reporte:</label>
                     <select name="account_id" required class="rounded-lg border-2 border-green-600 h-12 w-80 mt-2 pl-2 text-lg font-semibold">
-                        <option value="">Select an account</option>
+                        <option value="">Seleccione una cuenta</option>
                         @foreach($accounts as $account)
                             <option value="{{ $account->id }}" {{ old('account_id') == $account->id ? 'selected' : '' }}>
                                 {{ $account->username }}
@@ -34,9 +34,9 @@
                         @endforeach
                     </select>
 
-                    <label class="mt-6">Type of pet:</label>
+                    <label class="mt-6">Tipo de mascota:</label>
                     <select name="animal_id" required class="rounded-lg border-2 border-green-600 h-12 w-80 mt-2 pl-2 text-lg font-semibold">
-                        <option value="">Select an animal</option>
+                        <option value="">Seleccione un animal</option>
                         @foreach($animals as $animal)
                             <option value="{{ $animal->id }}" {{ old('animal_id') == $animal->id ? 'selected' : '' }}>
                                 {{ $animal->name ?? $animal->specie }}
@@ -44,31 +44,30 @@
                         @endforeach
                     </select>
 
-                    <label class="mt-6">Pet name:</label>
+                    <label class="mt-6">Nombre de la mascota:</label>
                     <input type="text" name="pet_name" value="{{ old('pet_name') }}" required
                         class="rounded-lg border-2 border-green-600 h-12 w-80 mt-2 pl-2 text-lg font-semibold"/>
 
-                    <label class="mt-6">Pet age:</label>
+                    <label class="mt-6">Edad de la mascota (años):</label>
                     <input type="number" name="pet_age" value="{{ old('pet_age') }}" min="0"
                         class="rounded-lg border-2 border-green-600 h-12 w-80 mt-2 pl-2 text-lg font-semibold"/>
 
-                    <label class="mt-6">Last place:</label>
+                    <label class="mt-6">Último lugar donde fue visto:</label>
                     <input type="text" name="last_place" value="{{ old('last_place') }}" required
                         class="rounded-lg border-2 border-green-600 h-12 w-80 mt-2 pl-2 text-lg font-semibold"/>
 
-                    <label class="mt-6">Pet state:</label>
+                    <label class="mt-6">Estado de la mascota:</label>
                     <select name="pet_state" required class="rounded-lg border-2 border-green-600 h-12 w-80 mt-2 pl-2 text-lg font-semibold">
-                        <option value="">Select a state</option>
-                        <option value="Perdido" {{ old('pet_state') == 'Perdido' ? 'selected' : '' }}>Lost</option>
-                        <option value="Encontrado" {{ old('pet_state') == 'Encontrado' ? 'selected' : '' }}>Found</option>
-                        <option value="Otro" {{ old('pet_state') == 'Otro' ? 'selected' : '' }}>Other</option>
+                        <option value="">Seleccione un estado</option>
+                        <option value="Perdido" {{ old('pet_state') == 'Perdido' ? 'selected' : '' }}>Perdido</option>
+                        <option value="Encontrado" {{ old('pet_state') == 'Encontrado' ? 'selected' : '' }}>Encontrado</option>
                     </select>
 
-                    <label class="mt-6">Description:</label>
+                    <label class="mt-6">Descripción:</label>
                     <textarea name="description" required rows="3"
                         class="rounded-lg border-2 border-green-600 w-80 mt-2 pl-2 text-lg font-semibold resize-none">{{ old('description') }}</textarea>
 
-                    <label for="pet_image" class="block text-sm font-medium text-gray-700 mt-9">Pet image (optional)</label>
+                    <label for="pet_image" class="block text-sm font-medium text-gray-700 mt-9">Imagen de la mascota (opcional)</label>
                     <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md hover:border-green-500 transition duration-150">
                         <div class="space-y-1 text-center">
                             <div id="imagePreviewContainer" class="hidden mb-4">
@@ -79,7 +78,7 @@
                             </svg>
                             <div class="flex flex-col items-center">
                                 <label for="pet_image" class="cursor-pointer bg-white rounded-md font-medium text-green-600 hover:text-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 px-3 py-2 mb-2">
-                                    Upload an image
+                                    Suba una imagen
                                 </label>
                                 <input id="pet_image" name="pet_image" type="file" accept="image/*"
                                     class="block w-full text-sm text-gray-500 mt-2">
@@ -94,11 +93,11 @@
                     @enderror
 
                     <button type="submit" class="mt-8 mb-5 w-80 font-bold rounded-2xl py-3 bg-green-700 text-white border-2 font-fredoka cursor-pointer border-green-700 hover:bg-transparent hover:text-green-700 duration-400">
-                    Confirm
+                    Confirmar
                     </button>
                     <a href="{{ route('report.index') }}"
                         class="mt-1 bg-green-700 text-white font-bold px-6 py-2 rounded-2xl w-full max-w-xs text-center hover:bg-transparent hover:text-green-700 border-2 border-green-700 transition duration-400 block">
-                        Back
+                        Atrás
                     </a>
                 </form>
             </div>
