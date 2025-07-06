@@ -40,8 +40,8 @@ class ReportController extends Controller
             'pet_name' => 'nullable|string|max:100',
             'pet_age' => 'nullable|integer|min:0',
             'last_place' => 'required|string|max:255',
-            'pet_image' => 'nullable|image|max:2048',
-            'description' => 'required|string',
+            'pet_image' => 'required|image|max:2048',
+            'description' => 'nullable|string',
             'pet_state' => 'required|string|max:50',
         ]);
 
