@@ -69,8 +69,8 @@
                     <label class="mt-6">Estado de la mascota:</label>
                     <select name="pet_state" required class="rounded-lg border-2 border-green-600 h-12 w-80 mt-2 pl-2 text-lg font-semibold">
                         <option value="">seleccione un estado</option>
-                        <option value="Perdido" {{ old('pet_state', $report->pet_state) == 'Perdido' ? 'selected' : '' }}>Lost</option>
-                        <option value="Encontrado" {{ old('pet_state', $report->pet_state) == 'Encontrado' ? 'selected' : '' }}>Found</option>
+                        <option value="Perdido" {{ old('pet_state', $report->pet_state) == 'Perdido' ? 'selected' : '' }}>Perdido</option>
+                        <option value="Encontrado" {{ old('pet_state', $report->pet_state) == 'Encontrado' ? 'selected' : '' }}>Encontrado</option>
                     </select>
 
                     <label class="mt-6">Descripción:</label>
